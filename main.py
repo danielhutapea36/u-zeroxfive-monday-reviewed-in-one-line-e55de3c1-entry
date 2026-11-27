@@ -49,6 +49,8 @@ def build_line() -> str:
         raise ValueError("line must be a single line")
     if "  " in line:
         raise ValueError("line must not contain two spaces in a row")
+    if "<" in line or ">" in line:
+        raise ValueError("line must be free of HTML markup")
     if line.count(".") != 1 or not line.endswith("."):
         raise ValueError("line must be exactly one sentence")
     return line
